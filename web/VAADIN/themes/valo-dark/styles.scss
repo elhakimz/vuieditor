@@ -1,0 +1,6 @@
+@import "variables";
+@import "../valo/valo";
+
+.valo-dark {
+  @include valo;
+}
