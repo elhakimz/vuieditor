@@ -7,13 +7,17 @@ import org.zhak.vuieditor.UiEditor;
 import org.zhak.vuieditor.model.ComponentData;
 import org.zhak.vuieditor.model.ComponentEventData;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Purpose:
  *
  * @author abilhakim
  *         Date: 12/14/14.
  */
-public class PropertyPane extends TabSheet {
+public final class PropertyPane extends TabSheet {
     private UiEditor uiEditor;
     private static PropertyPane __instance;
     private final CssWrap vl1 = new CssWrap();
@@ -25,11 +29,13 @@ public class PropertyPane extends TabSheet {
     private final Form eventForm = new Form();
     private final Tree layoutTree = new Tree();
     private Component currentComponent;
+    private List<String> visibleProps = new ArrayList<>(Arrays.asList("caption", "description", "height", "width"));
+    private List<String> visibleEvents = new ArrayList<>(Arrays.asList("onClick", "onRightClick"));
 
     private PropertyPane() {
 
         item = new BeanItem<>(new ComponentData());
-        propertyForm.setVisibleItemProperties("caption", "description", "height", "width");
+        propertyForm.setVisibleItemProperties(visibleProps);
         propertyForm.setItemDataSource(item);
         eventDataBeanItem = new BeanItem<>(new ComponentEventData());
         eventForm.setVisibleItemProperties("onClick", "onRightClick");
@@ -53,7 +59,7 @@ public class PropertyPane extends TabSheet {
     public void buildPropertyForm() {
 
         item = new BeanItem<>(new ComponentData());
-        propertyForm.setVisibleItemProperties("caption", "description", "height", "width");
+        propertyForm.setVisibleItemProperties(visibleProps);
         propertyForm.setItemDataSource(item);
         propertyForm.getLayout().addStyleName(ValoTheme.FORMLAYOUT_LIGHT);
 
@@ -69,7 +75,7 @@ public class PropertyPane extends TabSheet {
 
     public void buildEventForm() {
         eventDataBeanItem = new BeanItem<>(new ComponentEventData());
-        eventForm.setVisibleItemProperties("onClick", "onRightClick");
+        eventForm.setVisibleItemProperties(visibleEvents);
         eventForm.setItemDataSource(eventDataBeanItem);
         eventForm.getLayout().addStyleName(ValoTheme.FORMLAYOUT_LIGHT);
 

@@ -11,7 +11,7 @@ import java.util.*;
  * @author abilhakim
  *         Date: 12/14/14.
  */
-public class ToolboxPane extends VerticalLayout {
+public final class ToolboxPane extends VerticalLayout {
 
     private static ToolboxPane __instance;
     private final Accordion accordion = new Accordion();

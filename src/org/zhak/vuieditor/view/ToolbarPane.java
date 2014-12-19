@@ -12,7 +12,7 @@ import com.vaadin.ui.themes.ValoTheme;
  * @author abilhakim
  *         Date: 12/14/14.
  */
-public class ToolbarPane extends CssLayout {
+public final class ToolbarPane extends CssLayout {
     private ToolbarPane() {
 
         addStyleName(ValoTheme.LAYOUT_COMPONENT_GROUP);

@@ -15,7 +15,7 @@ import org.zhak.vuieditor.view.UiEditorPane;
  * @author abilhakim
  *         Date: 12/16/14.
  */
-public class UiGridLayout extends DDGridLayout {
+public final class UiGridLayout extends DDGridLayout {
     public UiGridLayout() {
         setDragMode(LayoutDragMode.CLONE);
         setDropHandler(new LayoutDropHandler(this));

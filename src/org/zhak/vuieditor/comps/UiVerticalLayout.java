@@ -15,7 +15,7 @@ import org.zhak.vuieditor.view.UiEditorPane;
  * @author abilhakim
  *         Date: 12/16/14.
  */
-public class UiVerticalLayout extends DDVerticalLayout {
+public final class UiVerticalLayout extends DDVerticalLayout {
     public UiVerticalLayout() {
         setDragMode(LayoutDragMode.CLONE);
         setDropHandler(new LayoutDropHandler(this));

@@ -12,7 +12,7 @@ import java.util.*;
  * @author abilhakim
  *         Date: 12/18/14.
  */
-public class ToolboxData {
+public final class ToolboxData {
 
     public static final Map<String,String> TOOLBOX_GROUP=new LinkedHashMap<>();
     public static final Map<String,Set<Class>> TOOLBOX_COMP_MAP=new LinkedHashMap<>();

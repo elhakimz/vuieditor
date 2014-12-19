@@ -15,7 +15,7 @@ import org.zhak.vuieditor.view.UiEditorPane;
  * @author abilhakim
  *         Date: 12/16/14.
  */
-public class UiAbsoluteLayout extends DDAbsoluteLayout {
+public final class UiAbsoluteLayout extends DDAbsoluteLayout {
     public UiAbsoluteLayout() {
         setDragMode(LayoutDragMode.CLONE);
         setDropHandler(new LayoutDropHandler(this));

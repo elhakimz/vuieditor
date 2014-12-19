@@ -15,7 +15,7 @@ import org.zhak.vuieditor.view.UiEditorPane;
  * @author abilhakim
  *         Date: 12/16/14.
  */
-public class UiFormLayout extends DDFormLayout {
+public final class UiFormLayout extends DDFormLayout {
     public UiFormLayout() {
         setDragMode(LayoutDragMode.CLONE);
         setDropHandler(new LayoutDropHandler(this));

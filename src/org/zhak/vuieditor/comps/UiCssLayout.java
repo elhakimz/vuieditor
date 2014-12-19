@@ -15,7 +15,7 @@ import org.zhak.vuieditor.view.UiEditorPane;
  * @author abilhakim
  *         Date: 12/16/14.
  */
-public class UiCssLayout extends DDCssLayout {
+public final class UiCssLayout extends DDCssLayout {
     public UiCssLayout() {
         setDragMode(LayoutDragMode.CLONE);
         setDropHandler(new LayoutDropHandler(this));

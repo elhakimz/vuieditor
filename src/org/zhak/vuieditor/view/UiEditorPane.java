@@ -8,10 +8,12 @@ import fi.jasoft.dragdroplayouts.DDVerticalLayout;
 import fi.jasoft.dragdroplayouts.client.ui.LayoutDragMode;
 import fi.jasoft.dragdroplayouts.details.AbsoluteLayoutTargetDetails;
 import fi.jasoft.dragdroplayouts.drophandlers.DefaultAbsoluteLayoutDropHandler;
-
 import org.zhak.vuieditor.UiEditor;
+import org.zhak.vuieditor.client.UiWidgetExtension;
 import org.zhak.vuieditor.comps.*;
 import org.zhak.vuieditor.event.ICommand;
+
+import java.util.Date;
 
 /**
  * Purpose:
@@ -19,7 +21,7 @@ import org.zhak.vuieditor.event.ICommand;
  * @author abilhakim
  *         Date: 12/14/14.
  */
-public class UiEditorPane extends CssLayout {
+public final class UiEditorPane extends CssLayout {
 
     private UiEditor uiEditor;
     private static UiEditorPane __instance;
@@ -146,7 +148,7 @@ public class UiEditorPane extends CssLayout {
                         cmpLayout.addStyleName("wrapped");
                         System.out.println("data = " + data);
                     } else {
-                        cmp2.setCaption(caption);
+                        ((AbstractComponent) cmp2).setDescription(caption);
                     }
 
 
@@ -156,13 +158,24 @@ public class UiEditorPane extends CssLayout {
                 if (isLayout) {
                     ((DDAbsoluteLayout) event.getTargetDetails().getTarget()).addComponent(cmpLayout, "left:" + String.valueOf(x) + "px;top:" + String.valueOf(y) + "px");
                 } else {
-                    addListenerToComp(cmp2);
-                    ((DDAbsoluteLayout) event.getTargetDetails().getTarget()).addComponent(cmp2, "left:" + String.valueOf(x) + "px;top:" + String.valueOf(y) + "px");
+                    if(cmp2 instanceof Button || cmp2 instanceof Panel) cmp2.setCaption(caption);
+                    UiComponentWrapper wrapper = new UiComponentWrapper(cmp2);
+                    ((DDAbsoluteLayout) event.getTargetDetails().getTarget()).addComponent(wrapper, "left:" + String.valueOf(x) + "px;top:" + String.valueOf(y) + "px");
                 }
 
             }
 
         }
+
+
+        private FieldEvents.FocusListener focusListener = new FieldEvents.FocusListener() {
+
+            public void focus(FieldEvents.FocusEvent event) {
+                Label msg = new Label(new Date() + " Focused "
+                        + event.getComponent().getCaption());
+              updatePropertyView(event.getComponent());
+            }
+        };
 
         public void addListenerToComp(Component comp) {
             if (comp instanceof AbstractTextField) {
@@ -173,8 +186,21 @@ public class UiEditorPane extends CssLayout {
                     }
 
                 });
-            }
+            }else if(comp instanceof DateField) {
+                ((DateField) comp).addFocusListener(focusListener);
+            }else if(comp instanceof CheckBox) {
+                ((CheckBox) comp).addFocusListener(focusListener);
+            }else if(comp instanceof ComboBox) {
+                ((ComboBox) comp).addFocusListener(focusListener);
+            }else if(comp instanceof OptionGroup) {
+                ((OptionGroup) comp).addFocusListener(focusListener);
+            }else if(comp instanceof Button) {
+                ((Button) comp).addFocusListener(focusListener);
+            }else if(comp instanceof Select) {
+                ((Select) comp).addFocusListener(focusListener);
+            }else  {
 
+            }
         }
 
     }

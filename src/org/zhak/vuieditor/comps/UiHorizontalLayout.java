@@ -15,7 +15,7 @@ import org.zhak.vuieditor.view.UiEditorPane;
  * @author abilhakim
  *         Date: 12/16/14.
  */
-public class UiHorizontalLayout extends DDHorizontalLayout {
+public final class UiHorizontalLayout extends DDHorizontalLayout {
     public UiHorizontalLayout() {
         setDragMode(LayoutDragMode.CLONE);
         setDropHandler(new LayoutDropHandler(this));

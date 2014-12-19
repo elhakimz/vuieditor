@@ -99,18 +99,21 @@ public class DropHandlerPerformer {
                     cmpLayout.addStyleName("wrapped");
                     System.out.println("data = " + data);
                 } else {
-                    cmp2.setCaption(caption);
+                    ((AbstractComponent) cmp2).setDescription(caption);
                 }
 
             if (isLayout) {
                 this.layout.addComponent(cmpLayout);
                 this.layout.setSizeUndefined();
             } else {
-                addListenerToComp(cmp2);
-                this.layout.addComponent(cmp2);
+                if(cmp2 instanceof Button || cmp2 instanceof Panel) cmp2.setCaption(caption);
+                UiComponentWrapper wrapper = new UiComponentWrapper(cmp2);
+                this.layout.addComponent(wrapper);
                 this.layout.setSizeUndefined();
             }
 
+        }else{
+            this.layout.setSizeUndefined();
         }
 
     }
