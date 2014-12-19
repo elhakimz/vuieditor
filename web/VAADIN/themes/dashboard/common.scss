@@ -309,9 +309,9 @@
 
   .v-layout-wrapped, .v-absolutelayout-wrapped, .v-verticallayout-wrapped
     , .v-horizontallayout-wrapped , .v-csslayout-wrapped, .v-formlayout-wrapped {
-    border: 1px dashed #0972a5;
+    border: 1px dotted #0972a5;
     margin:3px;
-    background-color: #eeeeee;
+    background-color: #efefef;
   }
 
   .v-absolutelayout-uigrid{
@@ -321,4 +321,13 @@
       ) repeat;
 
   }
+  .v-csslayout-inwrapped{
+    border: 2px dashed #09b0ff;
+  }
+
+  .v-nativebutton-wrapped{
+    margin-left: -5px;
+  }
+
+
 }
